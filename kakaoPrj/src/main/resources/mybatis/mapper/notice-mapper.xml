@@ -6,4 +6,7 @@
 	<select id="listDao">
 		SELECT * FROM notice WHERE receiver IS NULL OR writer = #{writer} OR receiver = #{receiver}
 	</select>
+	<select id="detailDao">
+	
+	</select>
 </mapper>

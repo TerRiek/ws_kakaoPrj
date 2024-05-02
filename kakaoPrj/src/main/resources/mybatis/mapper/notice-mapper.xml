@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.kakaoPrj.dao.INoticeDao">
-	<select id="listDao">
+	<select id="listDao" resultType="com.example.kakaoPrj.dto.NoticeDto">
 		SELECT * FROM notice WHERE receiver = '' OR writer = #{writer} OR receiver = #{receiver}
 	</select>
 	<select id="detailDao">

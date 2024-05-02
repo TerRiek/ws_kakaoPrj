@@ -11,7 +11,7 @@ import lombok.extern.log4j.Log4j2;
 public class PrjController {
 
 	@RequestMapping("/aaa")
-	public @ResponseBody String root() {
+	public String root() {
 		return "aaa";
 	}
 }

@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kakaoPrj.dao.IMemberDao;
 import com.example.kakaoPrj.dto.MemberDto;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
@@ -23,15 +25,26 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/regist")
-	public String regDto(HttpServletRequest request) {
+	public String regDto(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
 		
-		MemberDto dto = new MemberDto("", id, pw, name);
-		mdao.regDto(dto);
+		int result = 0;
+		result = mdao.loginCheck(id, pw);
+		System.out.println(result);
+			
+		if(result != 0) {
+			model.addAttribute("msg", "등록되지 않았습니다. 다시 입력해주세요.");
+			return "alert";
+		}else if(result == 0){
+			MemberDto dto = new MemberDto("", id, pw, name);
+			mdao.regDto(dto);	
+			model.addAttribute("msg", "등록이 완료되었습니다.");
+			result = 0;
+		}
 		
-		return "loginForm";
+		return "alert";
 	}
 	
 	@RequestMapping("/mDetail")

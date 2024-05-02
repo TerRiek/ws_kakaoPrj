@@ -8,6 +8,10 @@
 	<select id="detailDto" resultType="com.example.kakaoPrj.dto.MemberDto">
 		SELECT * FROM member WHERE mno = #{mno}
 	</select>
+	<select id="getDto">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+	
 	<select id="loginCheck">
 		SELECT COUNT(mno) FROM member WHERE id = #{id} AND pw = #{pw}
 	</select>

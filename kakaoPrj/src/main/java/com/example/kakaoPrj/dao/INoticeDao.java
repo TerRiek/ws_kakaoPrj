@@ -13,4 +13,5 @@ public interface INoticeDao {
 	public NoticeDto detailDao(@Param("nno") String nno);
 	public int writeDao(@Param("dto") NoticeDto dto );
 	public int deleteDao(@Param("nno") String nno);
+	public int updateDao(@Param("dto") NoticeDto dto);
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.example.kakaoPrj.dao.IMemberDao">
+	<select id="detailDto" resultType="com.example.kakaoPrj.dto.MemberDto">
+		SELECT * FROM member WHERE mno = #{mno}
+	</select>
+	<select id="loginCheck">
+		SELECT COUNT(mno) FROM member WHERE id = #{id} AND pw = #{pw}
+	</select>
+	<insert id="regDto">
+		INSERT INTO member (id, pw, name) VALUES(#{dto.id}, #{dto.pw}, #{dto.name})
+	</insert>
+	<update id="updateDto">
+		UPDATE member SET id = #{dto.id}, pw = #{dto.pw}, name = #{name} WHERE mno = #{mno}
+	</update>
+	<delete id="deleteDto">
+		DELETE FROM member WHERE mno = #{mno}
+	</delete>
+</mapper>

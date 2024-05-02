@@ -13,7 +13,7 @@
 		INSERT INTO notice (title, content, writer, receiver, regdate) VALUES(#{dto.title}, #{dto.content}, #{dto.writer}, #{dto.receiver}, #{dto.regdate})
 	</insert>
 	<update id="updateDao">
-		UPDATE notice SET title = #{title}, content = #{content}, writer = #{writer}, receiver = #{receiver} WHERE nno = #{nno} AND writer = #{writer}
+		UPDATE notice SET title = #{dto.title}, content = #{dto.content}, writer = #{dto.writer}, receiver = #{dto.receiver} WHERE nno = #{dto.nno} AND writer = #{writer}
 	</update>
 	<delete id="deleteDao">
 		DELETE FROM notice WHERE nno = #{nno} and writer = #{writer}

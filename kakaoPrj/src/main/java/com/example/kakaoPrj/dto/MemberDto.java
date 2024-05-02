@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemberDto {
 
-	private int mno;
+	private String mno;
 	private String id;
 	private String pw;
 	private String name;

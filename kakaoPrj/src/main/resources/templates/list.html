@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div th:text="${name}"></div>
+	<a href="/myPage" style="text-align: right;">My Page</a><br>
+	<a href="/logout" style="text-align: right;">로그아웃</a>
+	
+	
+    <div>[[${name}]]님, 환영합니다.</div>
     <div id="wrap">
         <table border="1">
             <thead>
@@ -18,7 +22,7 @@
             <tbody>
                 <tr th:each="dto : ${list}">
                     <td th:text="${dto.nno}"></td>
-                    <td th:text="${dto.title}"></td>
+                    <td><a th:href="@{listDetail(nno=${dto.nno})}">[[${dto.title}]]</a></td>
                     <td th:text="${dto.writer}"></td>
                 </tr>
             </tbody>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.kakaoPrj.dao.IMemberDao;
 import com.example.kakaoPrj.dao.INoticeDao;
 
+import ch.qos.logback.core.model.Model;
 import lombok.extern.log4j.Log4j2;
 
 @Controller
@@ -26,7 +27,12 @@ public class PrjController {
 	}
 	
 	@RequestMapping("/loginForm")
-	public String login() {
+	public String loginForm() {
 		return "loginForm";
+	}
+	
+	@RequestMapping("/login")
+	public String login(Model model) {
+		return "list";
 	}
 }

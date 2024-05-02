@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>내가 쓴 글</h1>
+	<table border="1">
+		<thead>
+			<th>번호</th><th>제목</th><th>작성일자</th>
+		</thead>
+		<tbody>
+			<tr th:each="dto : ${list}">
+				<td th:text="${dtoStat.count}"></td>
+				<td><a th:href="@{/mySelfDetail(nno=${dto.nno})}">[[${dto.title]]</a></td>
+				<td>[[${dto.regdate]]</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

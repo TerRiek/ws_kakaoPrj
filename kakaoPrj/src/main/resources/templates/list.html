@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 목록 보기</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div id="wrap">
-        <thead>
-            <th>글번호</th>
-            <th>제목</th>
-            <th>아이디</th>
-        </thead>
-        <tbody>
-            <tr th:each="dto : ${list}">
-                <td th:text="${dto.nno}"></td>
-                <td th:text="${dto.title}"></td>
-                <td th:text="${dto.writer}"></td>
-            </tr>
-        </tbody>
+        <table border="1">
+            <thead>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>아이디</th>
+            </thead>
+            <tbody>
+                <tr th:each="dto : ${list}">
+                    <td th:text="${dto.nno}"></td>
+                    <td th:text="${dto.title}"></td>
+                    <td th:text="${dto.writer}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

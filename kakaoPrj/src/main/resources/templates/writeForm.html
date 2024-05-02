@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인하기</title>
+    <title>글 작성하기</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div id="wrap">
         <div>
             <form action="writeDao">
                 제목 : <input type="text" name="id"> <br>
-                비밀번호 : <input type="text" name="pw"> <br>
-                <input type="submit" value="로그인">
+                글쓴이 : <input type="text" name="writer" th:text="${sessionScope.id}"> <br>
+                받을사람 : <input type="text" name="receiver" value=""> <br>
+                작성일 : <input type="date" name="regdate"> <br>
+                내용 : <input type="text" name="content"> <br>
+                <input type="submit" value="등록하기">
             </form>
         </div>
     </div>

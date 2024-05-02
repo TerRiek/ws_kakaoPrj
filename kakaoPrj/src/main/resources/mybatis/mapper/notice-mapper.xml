@@ -6,6 +6,15 @@
 	<select id="listDao" resultType="com.example.kakaoPrj.dto.NoticeDto">
 		SELECT * FROM notice WHERE receiver = '' OR writer = #{writer} OR receiver = #{receiver}
 	</select>
+	<select id="getMeWroten">
+		SELECT * FROM notice WHERE writer = #{writer}
+	</select>
+	<select id="getMeMentioned">
+		SELECT * FROM notice WHERE receiver = #{receiver} 
+	</select>
+	<select id="getMySelf">
+		SELECT * FROM notice WHERE writer = #{writer} AND receiver = #{writer}
+	</select>
 	<select id="detailDao">
 		SELECT * FROM notice WHERE nno = #{nno}
 	</select>

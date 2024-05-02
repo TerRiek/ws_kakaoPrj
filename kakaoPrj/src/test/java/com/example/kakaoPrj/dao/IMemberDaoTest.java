@@ -1,13 +1,12 @@
 package com.example.kakaoPrj.dao;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.kakaoPrj.dto.MemberDto;
+import com.example.kakaoPrj.dto.NoticeDto;
 
 @SpringBootTest
 class IMemberDaoTest {
@@ -15,10 +14,13 @@ class IMemberDaoTest {
 	@Autowired
 	private IMemberDao dao;
 	
+	@Autowired
+	private INoticeDao nDao;
+	
 	@Test
 	void testMemberDao() {
-		int result = dao.updateDto(new MemberDto("2", "fff", "fff", "fff"));
-		System.out.println(result);
+		List<NoticeDto> list = nDao.getMySelf("fff");
+		System.out.println(list);
 	}
 
 }

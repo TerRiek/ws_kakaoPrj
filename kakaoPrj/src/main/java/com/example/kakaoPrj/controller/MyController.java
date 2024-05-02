@@ -18,7 +18,8 @@ import lombok.extern.log4j.Log4j2;
 
 @Controller
 @Log4j2
-public class PrjController {
+@RequestMapping("/my")
+public class MyController {
 
 	@Autowired
 	private IMemberDao mdao;
@@ -47,7 +48,7 @@ public class PrjController {
 		if(result == 1) {			
 			// id와 일치하는 member 테이블의 쿼리문을 가져와야함 하나만 가져와도 되므로 객체 형태도 ㄱㅊ
 			// MemberDto getDto(String id);
-			MemberDto dto = mdao.getDto(id);
+			MemberDto memDto = mdao.getDto(id);
 			
 			// 그 dto 내에 있는 name을 가져와서 name을 session에 저장하기 --> ㅇㅇ님, 반갑습니다.
 			// name을 게시글에서 writer로 사용해야함 즉, writer 파라미터의 value 값이 name
@@ -58,26 +59,29 @@ public class PrjController {
 			//System.out.println(name);
 			
 			// name을 세션에 저장
-			session.setAttribute("dto", dto);
+			//session.setAttribute("name", name);
 
 		}
 
-		return "redirect:list";
+		return "list";
 	}
-
-	@RequestMapping("/list")
-	public String list(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
-		MemberDto dto = (MemberDto)session.getAttribute("dto");
-		
-		String id = dto.getId();
-		
+	
+	//@RequestMapping("/list")
+	public String list(@RequestParam ("writer") String writer, @RequestParam ("receiver") String receiver, Model model) {
 		// notice의 모든 쿼리를 불러온 상태에서 List<NoticeDto> getList
 		// list 내의 모든 receiver를 param으로 설정 --> 어떻게?
 		// --> param으로 설정할게 아니라 list 내의 모든 receiver를 추출해서 (반복문)
 		// receiver == writer 이거나, receiver == null, receiver == "" 인것만 출력해야함
 		
-		model.addAttribute("list", ndao.listDao(id));
+		model.addAttribute("list", ndao.listDao(writer, receiver));
+		return "list";
+	}
+	
+	@RequestMapping("/list")
+	public String list(Model model) {
+		String writer = "홍길동";
+		String receiver = "";
+		model.addAttribute("list", ndao.listDao(writer, receiver));
 		return "list";
 	}
 	

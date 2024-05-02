@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Page</title>
+</head>
+<body>
+
+<!-- alert를 표시할 부분 -->
+<div id="alertContainer"></div>
+
+<!-- alert를 표시하는 JavaScript 코드 -->
+<script th:inline="javascript">
+    /* 모델에서 전달된 alert 메시지 가져오기 */
+    var alertMessage = '[[${msg}]]';
+
+    function showAlert(message) {
+        alert(message);
+        window.open('regForm');
+    }
+
+    window.onload = function () {
+        showAlert(alertMessage);
+    };
+</script>

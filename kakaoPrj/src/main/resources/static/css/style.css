@@ -5,3 +5,31 @@ ul,li{list-style: none;}
 img{border: 0; display: block;}
 body{background-color: #fff; color: #333;}
 
+#wrap{
+    width: 100%; height: 1000px;
+    background-color: beige;
+}
+
+#hello{
+    text-align: center;
+}
+
+#indexBtn{
+    width: 200px;
+    margin: 0 auto;
+}
+#indexBtn>li{
+    text-align: center;
+    float: left;
+    width: 70px; height: 30px;
+    background-color: black;
+    color: white;
+    font: 900 15px/30px '';
+    margin-left: 30px;
+}
+
+#loginBtn:hover, #regBtn:hover{
+    background-color: white;
+    color: black;
+    transition-duration: 0.5s;
+}

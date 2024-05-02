@@ -9,21 +9,21 @@
 	<table>
 		<thead>
 			<tr>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>언급된자</td>
-				<td>작성일자</td>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>언급된자</th>
+				<th>작성일자</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="notice : ${list}">
-				<td><a th:text="${notice.title}" th:href="@{/detail(nno=${notice.nno})}"></a></td>
+				<td><a th:text="${notice.title}" th:href="@{/my/fromMeWrotenDetail(nno=${notice.nno})}"></a></td>
 				<td><a th:text="${notice.writer}"></a></td>
 				<td><a th:text="${notice.receiver}"></a></td>
 				<td><a th:text="${notice.regdate}"></a></td>
 			</tr>
 		</tbody>
 	</table>
-	<a th:href="list">리스트로 가기</a>
+	<a href="/list">리스트로 가기</a>
 </body>
 </html>

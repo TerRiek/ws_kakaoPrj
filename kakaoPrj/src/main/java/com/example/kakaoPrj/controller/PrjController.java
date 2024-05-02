@@ -72,6 +72,7 @@ public class PrjController {
 		
 		String id = dto.getId();
 		
+		
 		// notice의 모든 쿼리를 불러온 상태에서 List<NoticeDto> getList
 		// list 내의 모든 receiver를 param으로 설정 --> 어떻게?
 		// --> param으로 설정할게 아니라 list 내의 모든 receiver를 추출해서 (반복문)

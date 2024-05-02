@@ -5,18 +5,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>내가 쓴 글</h1>
+	<h1>나에게 쓴 글</h1>
 	<table border="1">
 		<thead>
-			<th>번호</th><th>제목</th><th>작성일자</th>
+		<tr>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>언급된자</th>
+			<th>작성일자</th>
+		</tr>
 		</thead>
 		<tbody>
-			<tr th:each="dto : ${list}">
-				<td th:text="${dtoStat.count}"></td>
-				<td><a th:href="@{/mySelfDetail(nno=${dto.nno})}">[[${dto.title]]</a></td>
-				<td>[[${dto.regdate]]</td>
+			<tr th:each="notice : ${list}">
+				<td><a th:href="@{/mySelfDetail(nno=${notice.nno})}" th:text="${notice.title}"></a></td>
+				<td th:text="${notice.writer}"></td>
+				<td th:text="${notice.receiver}"></td>
+				<td th:text="${notice.regdate}"></td>
 			</tr>
 		</tbody>
 	</table>
+	<a href="/list">전체목록보기</a>
 </body>
 </html>

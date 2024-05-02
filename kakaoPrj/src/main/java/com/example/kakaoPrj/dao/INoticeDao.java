@@ -12,5 +12,6 @@ public interface INoticeDao {
 	public List<NoticeDto> listDao(@Param("writer") String writer, @Param("receiver") String receiver);
 	public NoticeDto detailDao(@Param("nno") String nno);
 	public int writeDao(@Param("dto") NoticeDto dto );
-	public int deleteDao(@Param("nno") String nno);
+	public int deleteDao(@Param("title") String title, @Param("content") String content);
+	public int updateDao(@Param("dto") NoticeDto dto);
 }

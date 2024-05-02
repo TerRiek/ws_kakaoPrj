@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class NoticeDto {
 
-	private int mno;
+	private int nno;
 	private String title;
 	private String content;
 	private String writer;

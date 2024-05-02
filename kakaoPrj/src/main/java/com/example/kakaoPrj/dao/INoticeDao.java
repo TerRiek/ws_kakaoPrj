@@ -10,7 +10,7 @@ import com.example.kakaoPrj.dto.NoticeDto;
 @Mapper
 public interface INoticeDao {
 	public List<NoticeDto> listDao(@Param("writer") String Writer, @Param("receiver") String receiver);
-	//public NoticeDto detailDao(String nno);
-	//public void writeDao(String title, String content, String writer, String regdate, String reciever);
-	//public void deleteDao(String nno);
+	public NoticeDto detailDao(@Param("nno") String nno);
+	public int writeDao(@Param("dto") NoticeDto dto );
+	public int deleteDao(@Param("nno") String nno);
 }

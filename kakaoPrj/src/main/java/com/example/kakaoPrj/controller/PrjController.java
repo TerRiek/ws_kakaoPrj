@@ -76,7 +76,7 @@ public class PrjController {
 		// list 내의 모든 receiver를 param으로 설정 --> 어떻게?
 		// --> param으로 설정할게 아니라 list 내의 모든 receiver를 추출해서 (반복문)
 		// receiver == writer 이거나, receiver == null, receiver == "" 인것만 출력해야함
-		
+		model.addAttribute("name", dto.getName());
 		model.addAttribute("list", ndao.listDao(id));
 		return "list";
 	}

@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>���� ����</h1>
+	<h1>내가쓴글</h1>
 	<table>
+		<thead>
+			<tr>
+				<td>제목</td>
+				<td>작성자</td>
+				<td>언급된자</td>
+				<td>작성일자</td>
+			</tr>
+		</thead>
 		<tbody>
-			<tr th:each="">
+			<tr th:each="notice : ${list}">
+				<td><a th:text="${notice.title}" th:href="@{/detail(nno=${notice.nno})}"></a></td>
+				<td><a th:text="${notice.writer}"></a></td>
+				<td><a th:text="${notice.receiver}"></a></td>
+				<td><a th:text="${notice.regdate}"></a></td>
 			</tr>
 		</tbody>
 	</table>
+	<a th:href="list">리스트로 가기</a>
 </body>
 </html>

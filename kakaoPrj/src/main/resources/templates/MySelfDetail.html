@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>나에게 쓴 글</h1>
+	<hr>
+	<table border="1">
+		<thead>
+			<th>번호</th><th>제목</th><th>내용</th><th>작성일자</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="hidden" name="nno" value="${dto.nno}"></td>
+				<td><input type="text" name="title" value="${dto.title}"></td>
+				<td><input type="text" name="content" value="${dto.content}"></td>
+				<td><input type="text" name="regdate" value="${dto.regdate}" readonly></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="redirect:mySelf">나에게 쓴 글 목록으로 가기</a>
+</body>
+</html>

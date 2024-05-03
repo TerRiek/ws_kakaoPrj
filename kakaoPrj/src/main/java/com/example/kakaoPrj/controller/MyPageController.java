@@ -35,7 +35,7 @@ public class MyPageController {
 	@RequestMapping("/fromMeWrotenDetail")
 	public String fromMeWrotenDetail(@RequestParam("nno") String nno, Model model) {
 		model.addAttribute("dto", ndao.detailDao(nno));
-		return "MySelfDetail";
+		return "MySelfDetail2";
 	}
 	
 	@RequestMapping("/mySelf")
@@ -43,7 +43,7 @@ public class MyPageController {
 		HttpSession session = request.getSession();
 		MemberDto dto = (MemberDto)session.getAttribute("dto");
 		model.addAttribute("list", ndao.getMySelf(dto.getId()));
-		return "mySelf";
+		return "mySelf2";
 	}
 	
 	@RequestMapping("/mySelfDetail")
@@ -51,16 +51,40 @@ public class MyPageController {
 		String nno = request.getParameter("nno");
 		NoticeDto nDto = ndao.detailDao(nno);
 		model.addAttribute("dto", nDto);
-		return "MySelfDetail";
+		return "MySelfDetail2";
 	}
 	
 	
 	@RequestMapping("/meMentioned")
-	public String getMeMentioned(HttpSession session, Model model) {
-		String name = (String)session.getAttribute("name");
-		model.addAttribute("list", ndao.getMeMentioned(name));
-		
-		return "receiverWrite";
+	public String getMeMentioned(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		MemberDto dto = (MemberDto)session.getAttribute("dto");
+		model.addAttribute("list", ndao.getMeMentioned(dto.getId()));
+		return "receiverWrite2";
 	}
 	
+	@RequestMapping("/receiverWriteDetail")
+	public String root(@RequestParam("nno") String nno, Model model) {
+		NoticeDto dto = ndao.detailDao(nno);
+		model.addAttribute("dto", dto);
+		return "MySelfDetail2";
+	}
+	
+	@RequestMapping("/deleteDetail")
+	public String deleteDetail(@RequestParam("nno") String nno) {
+		int result = ndao.deleteDao(nno);
+		if(result == 1) {
+			return "redirect:/list";
+		}
+		return "";
+	}
+
+	@RequestMapping("/updateDetail")
+	public String updateDetail(@RequestParam("nno") String nno, @RequestParam("title") String title, @RequestParam("content") String content) {
+		int result = ndao.updateDao(nno, title, content);
+		if(result == 1) {
+			return "redirect:/list";
+		}
+		return "";
+	}
 }

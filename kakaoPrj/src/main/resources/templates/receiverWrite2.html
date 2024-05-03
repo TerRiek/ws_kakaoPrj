@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>내가 언급 된 글</h1>
+	<hr>
+	<a th:href="@{/list}">전체목록보기</a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>언급된자</th>
+				<th>작성일자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="dto, status : ${list}">
+				<td th:text="${status.count}"></td>
+				<td><a th:href="@{/my/receiverWriteDetail(nno=${dto.nno})}" th:text="${dto.title}"></a></td>
+				<td th:text="${dto.writer}"></td>
+				<td th:text="${dto.receiver}"></td>
+				<td th:text="${dto.regdate}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

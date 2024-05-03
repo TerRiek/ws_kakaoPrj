@@ -22,9 +22,9 @@
 		INSERT INTO notice (title, content, writer, receiver, regdate) VALUES(#{dto.title}, #{dto.content}, #{dto.writer}, #{dto.receiver}, #{dto.regdate})
 	</insert>
 	<update id="updateDao">
-		UPDATE notice SET title = #{title}, content = #{content}  WHERE nno = #{nno} AND writer = #{writer}
+		UPDATE notice SET title = #{title}, content = #{content}  WHERE nno = #{nno}
 	</update>
 	<delete id="deleteDao">
-		DELETE FROM notice WHERE nno = #{nno} and writer = #{writer}
+		DELETE FROM notice WHERE nno = #{nno}
 	</delete>
 </mapper>

@@ -23,7 +23,7 @@ public class MyPageControllerB {
 		MemberDto dto = (MemberDto)session.getAttribute("dto");
 		
 		model.addAttribute("name", dto.getName());
-		return "myPage";
+		return "myPage2";
 	}
 	
 	@RequestMapping("/listDetail")

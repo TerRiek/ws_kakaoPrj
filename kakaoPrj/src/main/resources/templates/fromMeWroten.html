@@ -9,6 +9,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>언급된자</th>
@@ -16,7 +17,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="notice : ${list}">
+			<tr th:each="notice, status : ${list}">
+				<td th:text="${status.count}">
 				<td><a th:text="${notice.title}" th:href="@{/my/fromMeWrotenDetail(nno=${notice.nno})}"></a></td>
 				<td><a th:text="${notice.writer}"></a></td>
 				<td><a th:text="${notice.receiver}"></a></td>

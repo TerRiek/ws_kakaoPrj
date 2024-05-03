@@ -24,6 +24,30 @@ public class MyPageController {
 	@Autowired
 	private IMemberDao mdao;
 	
+	@RequestMapping("/myPage")
+	public String myPage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		MemberDto dto = (MemberDto)session.getAttribute("dto");
+		
+		model.addAttribute("name", dto.getName());
+		return "myPage";
+	}
+	
+	@RequestMapping("/listDetail")
+	public String listDetail(HttpServletRequest request, Model model) {
+		String nno = request.getParameter("nno");
+		model.addAttribute("dto", ndao.detailDao(nno));
+		
+		return "listDetail";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("dto");
+		return "index";
+	}
+	
 	@RequestMapping("/fromMeWroten")
 	public String fromMeWroten(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();

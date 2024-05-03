@@ -15,17 +15,19 @@
 	
     <div id="greetings">[[${name}]]님, 환영합니다.</div>
     <div id="wrap">
-        <table border="1">
+        <table border="1" style="width: 80%; text-align: center;">
             <thead>
                 <th>글번호</th>
                 <th>제목</th>
                 <th>작성자</th>
+                <th>언급된 자</th>
             </thead>
             <tbody>
                 <tr th:each="dto : ${list}">
                     <td th:text="${dto.nno}"></td>
                     <td><a th:href="@{/my/listDetail(nno=${dto.nno})}">[[${dto.title}]]</a></td>
                     <td th:text="${dto.writer}"></td>
+                    <td th:text="${dto.receiver}"></td>
                 </tr>
             </tbody>
         </table>

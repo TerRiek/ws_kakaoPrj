@@ -9,6 +9,7 @@
 	<table border="1">
 		<thead>
 		<tr>
+			<th>번호</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>언급된자</th>
@@ -16,8 +17,9 @@
 		</tr>
 		</thead>
 		<tbody>
-			<tr th:each="notice : ${list}">
-				<td><a th:href="@{receiverWrite.htmlreceiverWrite.html/mySelfDetail(nno=${notice.nno})}" th:text="${notice.title}"></a></td>
+			<tr th:each="notice, status : ${list}">
+				<td th:text="${status.count}"></td>
+				<td><a th:href="@{/my/mySelfDetail(nno=${notice.nno})}" th:text="${notice.title}"></a></td>
 				<td th:text="${notice.writer}"></td>
 				<td th:text="${notice.receiver}"></td>
 				<td th:text="${notice.regdate}"></td>

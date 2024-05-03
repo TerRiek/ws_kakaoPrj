@@ -5,21 +5,36 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="/myPage" style="text-align: right;">My Page</a><br>
+	<a href="/logout" style="text-align: right;">로그아웃</a>
 	<h1>회원 정보 조회</h1>
 	<hr>
 	<table border="1">
 		<tr>
 			<th>아이디</th>
-			<td></td>
+			<td><input type="text" name="id" th:field="${dto.id}" readonly></td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td></td>
+			<td><input type="text" id="pw" name="pw" th:field="${dto.pw}"></td>
 		</tr>
 		<tr>
 			<th>이름</th>
-			<td></td>
+			<td><input type="text" id="name" name="name" th:field="${dto.name}"></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="button" value="수정하기" onclick="updateInfo()"></td>
 		</tr>
 	</table>
+	<a th:href="@{/mDelete(mno=${dto.mno})}">탈퇴하기</a>
 </body>
+<script>
+	function updateInfo(){
+		const pw = document.querySelector("#pw");
+		const name = document.querySelector("#name");
+		
+		location.href="/mUpdate?pw=" + pw.value + "&name=" + name.value;
+	}
+</script>
 </html>

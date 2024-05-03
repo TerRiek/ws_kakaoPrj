@@ -45,7 +45,7 @@ public class MemberController {
 		return "alert";
 	}
 	
-	@RequestMapping("/mDetail")
+	//@RequestMapping("/mDetail")
 	public String mDetail(HttpServletRequest request, Model model) {
 		String mno = request.getParameter("mno");
 		model.addAttribute("dto", mdao.detailDto(mno));
@@ -53,7 +53,7 @@ public class MemberController {
 		return "mDetail";
 	}
 	
-	@RequestMapping("/mDelete")
+	//@RequestMapping("/mDelete")
 	public String mDelete(HttpServletRequest request) {
 		String mno = request.getParameter("mno");
 		mdao.deleteDto(mno);
@@ -61,7 +61,7 @@ public class MemberController {
 		return "loginForm";
 	}
 	
-	@RequestMapping("/mUpdate")
+	//@RequestMapping("/mUpdate")
 	public String mUpdate(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");

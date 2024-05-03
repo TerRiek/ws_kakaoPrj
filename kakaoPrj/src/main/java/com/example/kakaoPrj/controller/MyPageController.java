@@ -30,7 +30,7 @@ public class MyPageController {
 		MemberDto dto = (MemberDto)session.getAttribute("dto");
 		
 		model.addAttribute("name", dto.getName());
-		return "myPage";
+		return "myPage2";
 	}
 	
 	@RequestMapping("/listDetail")
@@ -38,7 +38,7 @@ public class MyPageController {
 		String nno = request.getParameter("nno");
 		model.addAttribute("dto", ndao.detailDao(nno));
 		
-		return "listDetail";
+		return "MySelfDetail2";
 	}
 	
 	@RequestMapping("/logout")
@@ -48,13 +48,6 @@ public class MyPageController {
 		return "index";
 	}
 	
-	@RequestMapping("/fromMeWroten")
-	public String fromMeWroten(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
-		MemberDto dto = (MemberDto)session.getAttribute("dto");
-		model.addAttribute("list", ndao.getMeWroten(dto.getId()));
-		return "fromMeWroten";
-	}
 	
 	@RequestMapping("/fromMeWrotenDetail")
 	public String fromMeWrotenDetail(@RequestParam("nno") String nno, Model model) {
@@ -62,13 +55,6 @@ public class MyPageController {
 		return "MySelfDetail2";
 	}
 	
-	@RequestMapping("/mySelf")
-	public String getMySelf(Model model, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		MemberDto dto = (MemberDto)session.getAttribute("dto");
-		model.addAttribute("list", ndao.getMySelf(dto.getId()));
-		return "mySelf2";
-	}
 	
 	@RequestMapping("/mySelfDetail")
 	public String mySelfDetail(HttpServletRequest request, Model model) {
@@ -80,11 +66,26 @@ public class MyPageController {
 	
 	
 	@RequestMapping("/meMentioned")
-	public String getMeMentioned(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
+	public String getMeMentioned(HttpSession session, Model model) {
 		MemberDto dto = (MemberDto)session.getAttribute("dto");
 		model.addAttribute("list", ndao.getMeMentioned(dto.getId()));
+		
 		return "receiverWrite2";
+	}
+	
+	
+	@RequestMapping("/mySelf")
+	public String getMySelf(Model model, HttpSession session) {
+		MemberDto dto = (MemberDto)session.getAttribute("dto");
+		model.addAttribute("list", ndao.getMySelf(dto.getId()));
+		return "mySelf2";
+	}
+	
+	@RequestMapping("/fromMeWroten")
+	public String fromMeWroten(HttpSession session, Model model) {
+		MemberDto dto = (MemberDto)session.getAttribute("dto");
+		model.addAttribute("list", ndao.getMeWroten(dto.getId()));
+		return "fromMeWroten";
 	}
 	
 	@RequestMapping("/receiverWriteDetail")

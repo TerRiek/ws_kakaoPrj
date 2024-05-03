@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kakaoPrj.dao.IMemberDao;
@@ -45,15 +46,15 @@ public class MemberController {
 		return "alert";
 	}
 	
-	//@RequestMapping("/mDetail")
-	public String mDetail(HttpServletRequest request, Model model) {
-		String mno = request.getParameter("mno");
-		model.addAttribute("dto", mdao.detailDto(mno));
+	@RequestMapping("/mDetail")
+	public String mDetail(HttpSession session, Model model) {
+		MemberDto dto = (MemberDto)session.getAttribute("dto");
+		model.addAttribute("dto", dto);
 		
 		return "mDetail";
 	}
 	
-	//@RequestMapping("/mDelete")
+	@RequestMapping("/mDelete")
 	public String mDelete(HttpServletRequest request) {
 		String mno = request.getParameter("mno");
 		mdao.deleteDto(mno);
@@ -61,15 +62,13 @@ public class MemberController {
 		return "loginForm";
 	}
 	
-	//@RequestMapping("/mUpdate")
-	public String mUpdate(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
+	@RequestMapping("/mUpdate")
+	public String mUpdate(HttpServletRequest request, @RequestParam("pw") String pw, @RequestParam("name") String name) {
+		HttpSession session = request.getSession();
+		MemberDto dto2 = (MemberDto)session.getAttribute("dto");
+		MemberDto dto = new MemberDto(dto2.getMno(), "", pw, name);
+		mdao.updateDto(dto);
 		
-		MemberDto dto = new MemberDto("", id, pw, name);
-		
-		return "redirect:mDetail";
+		return "redirect:list";
 	}
-
 }

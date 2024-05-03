@@ -13,5 +13,6 @@ public interface IMemberDao {
 	public int regDto(@Param("dto") MemberDto dto);
 	public int deleteDto(@Param("mno") String mno);
 	public int loginCheck(@Param("id") String id, @Param("pw") String pw);
+	public int regCheck(@Param("id") String id);
 	public int updateDto(@Param("dto") MemberDto dto);
 }

@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <tr th:each="dto : ${list}">
-                    <td th:text="${dto.nno}"></td>
+                    <td th:text="${dtoStat.count}"></td>
                     <td><a th:href="@{/my/listDetail(nno=${dto.nno})}">[[${dto.title}]]</a></td>
                     <td th:text="${dto.writer}"></td>
                 </tr>

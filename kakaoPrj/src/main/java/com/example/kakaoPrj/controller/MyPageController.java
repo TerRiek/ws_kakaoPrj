@@ -30,7 +30,7 @@ public class MyPageController {
 		MemberDto dto = (MemberDto)session.getAttribute("dto");
 		
 		model.addAttribute("name", dto.getName());
-		return "myPage2";
+		return "myPage";
 	}
 	
 	@RequestMapping("/listDetail")
@@ -38,7 +38,7 @@ public class MyPageController {
 		String nno = request.getParameter("nno");
 		model.addAttribute("dto", ndao.detailDao(nno));
 		
-		return "MySelfDetail2";
+		return "listDetail";
 	}
 	
 	@RequestMapping("/logout")
@@ -52,7 +52,7 @@ public class MyPageController {
 	@RequestMapping("/fromMeWrotenDetail")
 	public String fromMeWrotenDetail(@RequestParam("nno") String nno, Model model) {
 		model.addAttribute("dto", ndao.detailDao(nno));
-		return "MySelfDetail2";
+		return "listDetail";
 	}
 	
 	
@@ -61,7 +61,7 @@ public class MyPageController {
 		String nno = request.getParameter("nno");
 		NoticeDto nDto = ndao.detailDao(nno);
 		model.addAttribute("dto", nDto);
-		return "MySelfDetail2";
+		return "listDetail";
 	}
 	
 	
@@ -70,7 +70,7 @@ public class MyPageController {
 		MemberDto dto = (MemberDto)session.getAttribute("dto");
 		model.addAttribute("list", ndao.getMeMentioned(dto.getId()));
 		
-		return "receiverWrite2";
+		return "receiverWrite";
 	}
 	
 	
@@ -78,7 +78,7 @@ public class MyPageController {
 	public String getMySelf(Model model, HttpSession session) {
 		MemberDto dto = (MemberDto)session.getAttribute("dto");
 		model.addAttribute("list", ndao.getMySelf(dto.getId()));
-		return "mySelf2";
+		return "mySelf";
 	}
 	
 	@RequestMapping("/fromMeWroten")
@@ -92,7 +92,7 @@ public class MyPageController {
 	public String root(@RequestParam("nno") String nno, Model model) {
 		NoticeDto dto = ndao.detailDao(nno);
 		model.addAttribute("dto", dto);
-		return "MySelfDetail2";
+		return "listDetail";
 	}
 	
 	@RequestMapping("/deleteDetail")

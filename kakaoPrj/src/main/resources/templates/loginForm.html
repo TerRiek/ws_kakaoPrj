@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인하기</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div id="wrap">
-        <div>
+        <header id="title">
+            <p>로그인</p>
+        </header>
+        <div id="login-form">
             <form action="login" method="post">
-                아이디 : <input type="text" name="id"> <br>
-                비밀번호 : <input type="text" name="pw"> <br>
-                <input type="submit" value="로그인">
+                <div id="inputform-container">
+                    <span>아이디</span> <input type="text" name="id" class="inputform"> <br><br>
+                    <span>비밀번호</span> <input type="text" name="pw" class="inputform">
+                </div>
+                <div id="loginBtn-container">
+                    <input type="submit" value="로그인" id="loginBtn-form">
+                </div>
             </form>
         </div>
     </div>
+    <div id="reg-btn"><a href="regForm">회원가입</a></div>
 </body>
 </html>

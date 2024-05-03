@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
-	<h1>나에게 쓴 글</h1>
+	<header id="title">
+        <p>나에게 쓴 글</p>
+    </header>
 	<table border="1">
 		<thead>
 		<tr>
@@ -17,7 +21,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="notice : ${list}">
-				<td><a th:href="@{receiverWrite.htmlreceiverWrite.html/mySelfDetail(nno=${notice.nno})}" th:text="${notice.title}"></a></td>
+				<td><a th:href="@{/mySelfDetail(nno=${notice.nno})}" th:text="${notice.title}"></a></td>
 				<td th:text="${notice.writer}"></td>
 				<td th:text="${notice.receiver}"></td>
 				<td th:text="${notice.regdate}"></td>

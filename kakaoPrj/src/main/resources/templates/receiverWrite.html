@@ -4,13 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
-	<a href="/myPage" style="text-align: right;">My Page</a><br>
-	<a href="/logout" style="text-align: right;">로그아웃</a>
-	
-	<h1>내가 언급 된 글</h1>
-	<hr>
+	<header id="title">
+        <p>내가 언급된 글</p>
+    </header>
 	<table border="1">
 		<thead>
 			<th>번호</th><th>제목</th><th>작성자</th><th>작성일자</th>
@@ -24,7 +24,5 @@
 			</tr>
 		</tbody>
 	</table>
-	<a th:href="@{/list}">전체목록보기</a>
-	
 </body>
 </html>

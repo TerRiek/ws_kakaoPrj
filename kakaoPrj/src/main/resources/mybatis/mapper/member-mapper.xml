@@ -11,10 +11,14 @@
 	<select id="getDto">
 		SELECT * FROM member WHERE id = #{id}
 	</select>
-	
 	<select id="loginCheck">
 		SELECT COUNT(mno) FROM member WHERE id = #{id} AND pw = #{pw}
 	</select>
+	
+	<select id="regCheck">
+		SELECT COUNT(mno) FROM member WHERE id = #{id}
+	</select>
+	
 	<insert id="regDto">
 		INSERT INTO member (id, pw, name) VALUES(#{dto.id}, #{dto.pw}, #{dto.name})
 	</insert>

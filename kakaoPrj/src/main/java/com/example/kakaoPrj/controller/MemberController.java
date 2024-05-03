@@ -30,8 +30,8 @@ public class MemberController {
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
 		
-		int result = 0;
-		result = mdao.loginCheck(id, pw);
+
+		int result = mdao.regCheck(id);
 		System.out.println(result);
 			
 		if(result != 0) {
@@ -41,9 +41,7 @@ public class MemberController {
 			MemberDto dto = new MemberDto("", id, pw, name);
 			mdao.regDto(dto);	
 			model.addAttribute("msg", "등록이 완료되었습니다.");
-			result = 0;
 		}
-		
 		return "alert";
 	}
 	

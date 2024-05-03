@@ -60,6 +60,8 @@ public class PrjController {
 			// name을 세션에 저장
 			session.setAttribute("dto", dto);
 
+		}else {
+			return "index";
 		}
 
 		return "redirect:list";

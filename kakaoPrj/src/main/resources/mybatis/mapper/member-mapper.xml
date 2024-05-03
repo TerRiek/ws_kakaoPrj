@@ -23,7 +23,7 @@
 		INSERT INTO member (id, pw, name) VALUES(#{dto.id}, #{dto.pw}, #{dto.name})
 	</insert>
 	<update id="updateDto">
-		UPDATE member SET id = #{dto.id}, pw = #{dto.pw}, name = #{dto.name} WHERE mno = #{dto.mno}
+		UPDATE member SET pw = #{dto.pw}, name = #{dto.name} WHERE mno = #{dto.mno}
 	</update>
 	<delete id="deleteDto">
 		DELETE FROM member WHERE mno = #{mno}

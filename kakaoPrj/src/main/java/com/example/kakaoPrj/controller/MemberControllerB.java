@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.kakaoPrj.dao.IMemberDao;
 import com.example.kakaoPrj.dto.MemberDto;
@@ -35,13 +36,12 @@ public class MemberControllerB {
 	}
 	
 	@RequestMapping("/mUpdate")
-	public String mUpdate(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
+	public String mUpdate(HttpServletRequest request, @RequestParam("pw") String pw, @RequestParam("name") String name) {
+		HttpSession session = request.getSession();
+		MemberDto dto2 = (MemberDto)session.getAttribute("dto");
+		MemberDto dto = new MemberDto(dto2.getMno(), "", pw, name);
+		mdao.updateDto(dto);
 		
-		MemberDto dto = new MemberDto("", id, pw, name);
-		
-		return "redirect:mDetail";
+		return "redirect:list";
 	}
 }

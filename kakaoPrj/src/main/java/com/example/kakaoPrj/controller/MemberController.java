@@ -55,20 +55,21 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/mDelete")
-	public String mDelete(HttpServletRequest request) {
-		String mno = request.getParameter("mno");
-		mdao.deleteDto(mno);
-		
-		return "loginForm";
+	public String mDelete(@RequestParam("mno") String mno) {
+		int result = mdao.deleteDto(mno);
+		if(result == 1) {
+			return "loginForm";
+		}
+		return "";
 	}
 	
 	@RequestMapping("/mUpdate")
-	public String mUpdate(HttpServletRequest request, @RequestParam("pw") String pw, @RequestParam("name") String name) {
-		HttpSession session = request.getSession();
-		MemberDto dto2 = (MemberDto)session.getAttribute("dto");
-		MemberDto dto = new MemberDto(dto2.getMno(), "", pw, name);
-		mdao.updateDto(dto);
-		
-		return "redirect:list";
+	public String mUpdate(@RequestParam("mno") String mno, @RequestParam("id") String id, @RequestParam("pw") String pw, @RequestParam("name") String name) {
+		MemberDto dto = new MemberDto(mno, id, pw, name);
+		int result = mdao.updateDto(dto);
+		if(result == 1) {
+			return "redirect:list";
+		}
+		return "";
 	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>회원정보 조회</title>
@@ -12,17 +12,37 @@
     </header>
 	<table border="1">
 		<tr>
+			<td>번호</td>
+			<td><input id="mno" th:field="${dto.mno}" readonly></td>
+		</tr>
+		<tr>
 			<th>아이디</th>
-			<td><input th:field="${dto.id}"></td>
+			<td><input id="id" th:field="${dto.id}"></td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><input></td>
+			<td><input id="pw" th:field="${dto.pw}"></td>
 		</tr>
 		<tr>
 			<th>이름</th>
-			<td></td>
+			<td><input id="name" th:field="${dto.name}"></td>
 		</tr>
 	</table>
+	<input type="button" value="삭제" onclick="deleteMember()">
+	<input type="button" value="수정" onclick="updateMember()">
+	<script type="text/javascript">
+		function deleteMember(){
+			const mno = document.querySelector("#mno");
+			location.href="/mDelete?mno=" + mno.value;
+		}
+		
+		function updateMember(){
+			const mno = document.querySelector("#mno");
+			const id = document.querySelector("#id");
+			const pw = document.querySelector("#pw");
+			const name = document.querySelector("#name");
+			location.href="/mUpdate?mno=" + mno.value + "&id=" + id.value + "&pw=" + pw.value + "&name=" + name.value;
+		}
+	</script>
 </body>
 </html>

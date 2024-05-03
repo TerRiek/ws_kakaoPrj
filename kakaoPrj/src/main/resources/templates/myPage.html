@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -19,6 +19,7 @@
 	<h1>My Page</h1>
 	<hr>
 	<nav>
+		<a th:href="@{/mDetail}">내정보조회</a>
 		<a th:href="@{/my/fromMeWroten}">내가 쓴 글</a>
 		<a th:href="@{/my/meMentioned}">내가 언급된 글</a>
 		<a th:href="@{/my/mySelf}">나에게 쓴 글</a>

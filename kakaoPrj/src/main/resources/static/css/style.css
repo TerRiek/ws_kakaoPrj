@@ -107,3 +107,15 @@ img{border: 0; display: block;}
 #reg-btn:hover a{
     color: white;
 }
+
+/* loginForm END */
+
+#greetings{
+    position: relative;
+    text-align: center;
+    font: 700 16px/40px 'Pretendard-Regular';
+}
+table{
+    margin: 0 auto;
+    font: 600 15px/40px 'Pretendard-Regular';
+}
